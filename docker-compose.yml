@@ -1,0 +1,9 @@
+---
+services:
+
+        web:
+                images: nginx
+
+                database:
+                        images: redis
+
