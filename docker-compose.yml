@@ -1,9 +1,11 @@
----
+version: '3'
 services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+  redis:
+    image: "redis:alpine"
 
-        web:
-                images: nginx
 
-                database:
-                        images: redis
 
