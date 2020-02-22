@@ -1,0 +1,25 @@
+---
+- hosts: all
+  become: yes
+  tasks:
+   
+   - name: cloning the repository from the github
+      git: 
+      repo: "https://github.com/mano8888/exist.git"
+      dest: /home/manoj/projects/
+      update: yes
+      version: master
+       
+      - name: build the package
+        shell: "mvn clean package"
+        args:
+        chdir: /home/manoj/projects/
+    
+         - name: copy the artifacts in tomcat
+           copy: 
+            src: /home/manoj/projects/exist/target/enter.war
+            dest: /home/manoj/downloads/tomcat/webapps
+          - name: retsrat httpd
+            service:
+            - name: tomcat
+              state: retsrat
